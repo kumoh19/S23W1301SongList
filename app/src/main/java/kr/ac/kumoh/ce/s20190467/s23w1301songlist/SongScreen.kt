@@ -167,7 +167,7 @@ fun SongDetail(song: Song) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             AsyncImage(
-                model = "https://i.pravatar.cc/100?u=${song.singer}",
+                model = "https://i.pravatar.cc/100?u=${song.singer}", //u= 똑같은 스트링을 주면 똑같이 나옴
                 contentDescription = "가수 이미지",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -181,7 +181,7 @@ fun SongDetail(song: Song) {
         song.lyrics?.let {
             Text(
                 it,
-                fontSize = 30.sp,
+                fontSize = 20.sp,
                 textAlign = TextAlign.Center,
                 lineHeight = 35.sp
             )
@@ -199,6 +199,16 @@ fun RatingBar(stars: Int) {
                 contentDescription = "stars",
                 modifier = Modifier.size(48.dp),
                 tint = Color.Red)
+        }
+
+        // 빈 별
+        repeat(5 - stars) {
+            Icon(
+                imageVector = Icons.Filled.Star,
+                contentDescription = "Empty star",
+                modifier = Modifier.size(48.dp),
+                tint = Color.Gray
+            )
         }
     }
 }
